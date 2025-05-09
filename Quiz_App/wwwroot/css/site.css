@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #3498db;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --dark-color: #2c3e50;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: #ffffff;
+}
+
+/* Custom Card Styling */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-header {
+    font-weight: 500;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Question and Answer Styling */
+.question-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.list-group-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 10px;
+    border-radius: 6px !important;
+}
+
+.list-group-item:hover {
+    background-color: #f1f8ff;
+}
+
+.list-group-item input[type="radio"] {
+    cursor: pointer;
+}
+
+/* Progress Bar Styling */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 16px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+/* Results Page */
+.bg-success.bg-opacity-10 {
+    background-color: rgba(46, 204, 113, 0.1) !important;
+}
+
+.bg-danger.bg-opacity-10 {
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f1f8ff;
+    color: var(--primary-color);
+}
+
+/* Bootstrap Overrides */
+.badge {
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .card:hover {
+        transform: none;
+    }
+} 

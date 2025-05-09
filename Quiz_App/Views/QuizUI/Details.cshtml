@@ -1,0 +1,67 @@
+@model QuizDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row mb-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">@Model.Title</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <p class="lead">@Model.Description</p>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-question-circle me-2"></i>Questions
+                                </h5>
+                                <p class="card-text display-4 text-center">@Model.QuestionCount</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-award me-2"></i>Passing Score
+                                </h5>
+                                <p class="card-text display-4 text-center">@Model.PassingScore%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <h5><i class="bi bi-info-circle me-2"></i>Instructions</h5>
+                    <ul>
+                        <li>Read each question carefully before selecting your answer.</li>
+                        <li>Once you submit an answer, you cannot change it.</li>
+                        <li>You will receive immediate feedback after each question.</li>
+                        <li>Your final score will be displayed at the end of the quiz.</li>
+                        <li>To pass the quiz, you need a score of at least @Model.PassingScore%.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid">
+                    <a asp-action="Start" asp-route-id="@Model.Id" class="btn btn-success btn-lg">
+                        <i class="bi bi-play-fill me-2"></i>Start Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-2"></i>Back to Quizzes
+            </a>
+        </div>
+    </div>
+</div> 

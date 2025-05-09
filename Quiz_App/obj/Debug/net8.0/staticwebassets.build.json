@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "nCqkxU7k1C4dBHHOv+sAQFwhFAmmwhV796/5UtNDq5Q=",
+  "Source": "Quiz_App",
+  "BasePath": "_content/Quiz_App",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Quiz_App\\wwwroot",
+      "Source": "Quiz_App",
+      "ContentRoot": "C:\\Users\\kstha\\source\\repos\\Quiz_App\\Quiz_App\\wwwroot\\",
+      "BasePath": "_content/Quiz_App",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\kstha\\source\\repos\\Quiz_App\\Quiz_App\\wwwroot\\css\\site.css",
+      "SourceId": "Quiz_App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kstha\\source\\repos\\Quiz_App\\Quiz_App\\wwwroot\\",
+      "BasePath": "_content/Quiz_App",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\kstha\\source\\repos\\Quiz_App\\Quiz_App\\wwwroot\\js\\site.js",
+      "SourceId": "Quiz_App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kstha\\source\\repos\\Quiz_App\\Quiz_App\\wwwroot\\",
+      "BasePath": "_content/Quiz_App",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    }
+  ]
+}

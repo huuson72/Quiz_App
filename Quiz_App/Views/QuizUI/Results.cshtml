@@ -1,0 +1,127 @@
+@model QuizResultViewModel
+
+@{
+    ViewData["Title"] = "Quiz Results";
+}
+
+<div class="row mb-4">
+    <div class="col-md-10 offset-md-1">
+        <div class="card shadow">
+            <div class="card-header @(Model.IsPassed ? "bg-success" : "bg-danger") text-white">
+                <h4 class="mb-0">
+                    @if (Model.IsPassed)
+                    {
+                        <i class="bi bi-trophy me-2"></i>
+                        <span>Congratulations! You Passed!</span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-x-circle me-2"></i>
+                        <span>Quiz Failed</span>
+                    }
+                </h4>
+            </div>
+            
+            <div class="card-body">
+                <h5 class="mb-4 text-center">@Model.QuizTitle Results</h5>
+                
+                <div class="row text-center mb-5">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded">
+                            <div class="fs-1 fw-bold">@Model.Score%</div>
+                            <div>Score</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded">
+                            <div class="fs-1 fw-bold">@Model.CorrectAnswers/@Model.TotalQuestions</div>
+                            <div>Correct Answers</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded">
+                            <div class="fs-1 fw-bold">@Model.FormattedDuration</div>
+                            <div>Time Taken</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-light rounded">
+                            <div class="fs-1 fw-bold @(Model.IsPassed ? "text-success" : "text-danger")">
+                                @(Model.IsPassed ? "PASS" : "FAIL")
+                            </div>
+                            <div>Result</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mb-3">Question Review</h5>
+                
+                <div class="accordion" id="questionReview">
+                    @for (int i = 0; i < Model.QuestionResults.Count; i++)
+                    {
+                        var questionResult = Model.QuestionResults[i];
+                        var questionId = $"question-{questionResult.QuestionId}";
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button @(i > 0 ? "collapsed" : "")" type="button" 
+                                        data-bs-toggle="collapse" data-bs-target="#@questionId" 
+                                        aria-expanded="@(i == 0 ? "true" : "false")" aria-controls="@questionId">
+                                    <div class="d-flex align-items-center w-100">
+                                        <span class="me-3">Question @(i + 1)</span>
+                                        @if (questionResult.WasCorrect)
+                                        {
+                                            <span class="badge bg-success ms-auto">Correct</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger ms-auto">Incorrect</span>
+                                        }
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="@questionId" class="accordion-collapse collapse @(i == 0 ? "show" : "")" 
+                                 data-bs-parent="#questionReview">
+                                <div class="accordion-body">
+                                    <p class="fw-bold mb-3">@questionResult.QuestionText</p>
+                                    
+                                    <div class="mb-3">
+                                        <div class="fw-bold mb-2">Your answer:</div>
+                                        <div class="p-3 border rounded @(questionResult.WasCorrect ? "bg-success bg-opacity-10 border-success" : "bg-danger bg-opacity-10 border-danger")">
+                                            @questionResult.SelectedAnswerText
+                                        </div>
+                                    </div>
+                                    
+                                    @if (!questionResult.WasCorrect && questionResult.CorrectAnswerText != null)
+                                    {
+                                        <div class="mb-3">
+                                            <div class="fw-bold mb-2">Correct answer:</div>
+                                            <div class="p-3 border rounded bg-success bg-opacity-10 border-success">
+                                                @questionResult.CorrectAnswerText
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <a asp-controller="QuizUI" asp-action="Start" asp-route-id="@Model.QuizId" class="btn btn-primary d-block">
+                            <i class="bi bi-arrow-repeat me-2"></i>Retake Quiz
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary d-block">
+                            <i class="bi bi-house me-2"></i>Return to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

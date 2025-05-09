@@ -1,0 +1,64 @@
+@model FeedbackViewModel
+
+@{
+    ViewData["Title"] = "Answer Feedback";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-header @(Model.IsCorrect ? "bg-success" : "bg-danger") text-white">
+                <h4 class="mb-0">
+                    @if (Model.IsCorrect)
+                    {
+                        <i class="bi bi-check-circle me-2"></i>
+                        <span>Correct Answer!</span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-x-circle me-2"></i>
+                        <span>Incorrect Answer</span>
+                    }
+                </h4>
+            </div>
+            
+            <div class="card-body">
+                <h5 class="card-title mb-3">@Model.QuestionText</h5>
+                
+                <div class="mb-4">
+                    <div class="fw-bold mb-2">Your answer:</div>
+                    <div class="p-3 border rounded @(Model.IsCorrect ? "bg-success bg-opacity-10 border-success" : "bg-danger bg-opacity-10 border-danger")">
+                        @Model.SelectedAnswerText
+                    </div>
+                </div>
+                
+                @if (!Model.IsCorrect && Model.CorrectAnswerText != null)
+                {
+                    <div class="mb-4">
+                        <div class="fw-bold mb-2">Correct answer:</div>
+                        <div class="p-3 border rounded bg-success bg-opacity-10 border-success">
+                            @Model.CorrectAnswerText
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <div class="card-footer">
+                <div class="d-grid">
+                    @if (Model.IsLastQuestion)
+                    {
+                        <a asp-action="Results" asp-route-attemptId="@Model.AttemptId" class="btn btn-primary">
+                            <i class="bi bi-trophy me-2"></i>See Results
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Question" asp-route-attemptId="@Model.AttemptId" asp-route-questionId="@Model.NextQuestionId" class="btn btn-primary">
+                            <i class="bi bi-arrow-right me-2"></i>Next Question
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
